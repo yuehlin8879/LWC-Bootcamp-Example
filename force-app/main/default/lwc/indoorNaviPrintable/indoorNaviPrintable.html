@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-grid slds-wrap printable-container">
+        <template for:each={directions} for:item="direction">
+            <div key={direction.image} class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+                <div class="slds-carousel__image">
+                    <img src={direction.image} />
+                </div>
+                <div class="slds-carousel__content">
+                    <h2 class="slds-carousel__content-title">{direction.title}</h2>
+                    <p>{direction.description}</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

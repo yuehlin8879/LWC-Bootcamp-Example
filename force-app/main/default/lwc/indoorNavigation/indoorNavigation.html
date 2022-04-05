@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-box slds-box_small slds-text-align_center slds-theme_shade">
+        <!--Header-->
+        <div class="slds-clearfix">
+            <div class="slds-float_right slds-m-bottom_small">
+                <template if:true={inPrintableView}>
+                    <!--Fires the event handler 'handlePrint' when the user click on this element-->
+                    <a class="slds-button slds-button_brand" onclick={handlePrint}>{labels.PRINTBTN}</a>
+                </template>
+                <a class="slds-button slds-button_brand" onclick={toggleView}>{labels.CHANGEVIEWBTN}</a>
+            </div>
+        </div>
+        <!--Navigation View-->
+        <template if:true={inNavigationView}>
+            <lightning-carousel>
+                <template for:each={directions} for:item="direction">
+                    <lightning-carousel-image key={direction} src={direction.image} header={direction.title} description={direction.description}>
+                    </lightning-carousel-image>
+                </template>
+            </lightning-carousel>
+        </template>
+        <!--Printable View-->
+        <template if:true={inPrintableView}>
+            <c-indoor-navi-printable directions={directions}></c-indoor-navi-printable>
+        </template>
+    </div>
+</template>
